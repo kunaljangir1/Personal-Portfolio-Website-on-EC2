@@ -19,6 +19,9 @@ For students and beginners, understanding how a server works is crucial. This pr
 
 ## 🏗️ Architecture Diagram
 
+![Project Architecture](public/assets/architecture.png)
+
+### Logical Flow (Mermaid)
 ```mermaid
 graph TD
     User((User Browser)) -->|HTTP/HTTPS| EIP[Elastic IP / Domain]
