@@ -44,6 +44,8 @@ const Navbar = () => {
         <button 
           className="md:hidden p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
         >
           {isMobileMenuOpen ? <X /> : <Menu />}
         </button>
@@ -63,6 +65,7 @@ const Navbar = () => {
                   href={link.href} 
                   className="text-xl font-medium"
                   onClick={() => setIsMobileMenuOpen(false)}
+                  aria-label={`Navigate to ${link.name}`}
                 >
                   {link.name}
                 </a>

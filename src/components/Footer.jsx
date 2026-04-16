@@ -18,16 +18,16 @@ const Footer = () => {
           </div>
 
           <div className="flex gap-6">
-            <a href="#" className="w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:bg-[var(--primary)] hover:text-white transition-all">
+            <a href="#" className="w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:bg-[var(--primary)] hover:text-white transition-all" aria-label="Github Profile">
               <Github size={20} />
             </a>
-            <a href="#" className="w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:bg-[var(--primary)] hover:text-white transition-all">
+            <a href="#" className="w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:bg-[var(--primary)] hover:text-white transition-all" aria-label="LinkedIn Profile">
               <Linkedin size={20} />
             </a>
-            <a href="#" className="w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:bg-[var(--primary)] hover:text-white transition-all">
+            <a href="#" className="w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:bg-[var(--primary)] hover:text-white transition-all" aria-label="Twitter Profile">
               <Twitter size={20} />
             </a>
-            <a href="#" className="w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:bg-[var(--primary)] hover:text-white transition-all">
+            <a href="#" className="w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:bg-[var(--primary)] hover:text-white transition-all" aria-label="Email Me">
               <Mail size={20} />
             </a>
           </div>

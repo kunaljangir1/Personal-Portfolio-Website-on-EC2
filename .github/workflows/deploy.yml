@@ -1,0 +1,44 @@
+name: Deploy Portfolio to EC2
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to EC2
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "dist/*"
+          target: "/home/ubuntu/portfolio"
+          strip_components: 1
+
+      - name: Post-deployment permissions
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            sudo cp -r /home/ubuntu/portfolio/* /var/www/portfolio/
+            sudo chown -R www-data:www-data /var/www/portfolio
+            sudo systemctl restart nginx
