@@ -1,47 +1,59 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Shield, Zap, Target } from 'lucide-react'
+import { Shield, Target, Zap } from 'lucide-react'
 
 const About = () => {
   const highlights = [
     {
-      icon: <Shield className="text-indigo-400" />,
-      title: "Security First",
-      desc: "Implementing multi-layered security protocols on every cloud infrastructure."
+      icon: <Shield size={20} />,
+      title: 'Security First',
+      desc: 'Implementing multi-layered security practices across hosting, routing, and application setup.',
     },
     {
-      icon: <Zap className="text-indigo-400" />,
-      title: "High Performance",
-      desc: "Optimizing load times and server response through Nginx and CDN integration."
+      icon: <Zap size={20} />,
+      title: 'High Performance',
+      desc: 'Improving content flow and lighter visual weight so the interface feels faster and easier to scan.',
     },
     {
-      icon: <Target className="text-indigo-400" />,
-      title: "Scalability",
-      desc: "Leveraging AWS Auto-scaling and Load Balancing for high availability."
-    }
+      icon: <Target size={20} />,
+      title: 'Scalability',
+      desc: 'Keeping the layout modular so future portfolio sections can be added without breaking alignment.',
+    },
   ]
 
   return (
-    <section id="about" className="bg-[var(--bg-dark)] py-24 rounded-[3rem] my-10">
-      <div className="container">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+    <section id="about" className="about-section">
+      <div className="container glass-panel about-shell">
+        <div className="about-grid">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.94 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 gap-4"
+            className="about-visual"
           >
-            <div className="space-y-4">
-              <div className="h-64 rounded-2xl bg-gradient-to-br from-[var(--primary)] to-transparent opacity-20 relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center font-bold text-4xl opacity-10">CLOUD</div>
+            <div className="about-column">
+              <div className="about-tile tall highlight">
+                <div>
+                  <span className="tile-label">Focus Area</span>
+                  <strong className="tile-title">Cloud</strong>
+                </div>
               </div>
-              <div className="h-40 rounded-2xl glass-panel"></div>
+              <div className="about-tile">
+                <span className="tile-label">Deployment</span>
+                <strong className="tile-title">EC2 + Nginx</strong>
+              </div>
             </div>
-            <div className="space-y-4 pt-8">
-              <div className="h-40 rounded-2xl glass-panel"></div>
-              <div className="h-64 rounded-2xl bg-gradient-to-tr from-[var(--primary)] to-transparent opacity-20 relative overflow-hidden">
-                 <div className="absolute inset-0 flex items-center justify-center font-bold text-4xl opacity-10">CODE</div>
+            <div className="about-column offset-column">
+              <div className="about-tile">
+                <span className="tile-label">Frontend</span>
+                <strong className="tile-title">React UI</strong>
+              </div>
+              <div className="about-tile tall highlight">
+                <div>
+                  <span className="tile-label">Outcome</span>
+                  <strong className="tile-title">Better UX</strong>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -52,20 +64,24 @@ const About = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-6">About This <span className="text-[var(--primary)]">Project</span></h2>
-            <p className="text-[var(--text-secondary)] mb-8 text-lg">
-              This portfolio was developed as a cloud computing mini-project. The goal was to build a full-stack application and deploy it on a secure, scalable AWS infrastructure using EC2 and Nginx.
-            </p>
-            
-            <div className="space-y-4">
+            <div className="section-heading">
+              <h2 className="section-title">
+                About This <span className="title-accent">Project</span>
+              </h2>
+              <p className="section-copy">
+                This portfolio was built to showcase cloud learning and web development work. The UI refresh focuses on stronger composition, fewer broken utility classes, and better placement of cards, forms, and section content.
+              </p>
+            </div>
+
+            <div className="highlight-list">
               {highlights.map((item, index) => (
-                <div key={index} className="flex gap-4 p-4 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)]">
-                  <div className="p-2 bg-[var(--bg-darker)] rounded-lg h-fit text-[var(--primary)]">
-                    {item.icon}
-                  </div>
+                <div key={index} className="highlight-card">
+                  <div className="highlight-icon">{item.icon}</div>
                   <div>
-                    <h4 className="text-lg font-bold mb-1">{item.title}</h4>
-                    <p className="text-sm text-[var(--text-secondary)]">{item.desc}</p>
+                    <h4 style={{ fontSize: '1.05rem', marginBottom: '0.25rem' }}>{item.title}</h4>
+                    <p className="section-copy" style={{ fontSize: '0.95rem' }}>
+                      {item.desc}
+                    </p>
                   </div>
                 </div>
               ))}

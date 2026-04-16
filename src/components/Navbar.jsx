@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 
@@ -10,12 +10,20 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
     }
+
+    handleScroll()
     window.addEventListener('scroll', handleScroll)
+
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    document.body.classList.toggle('menu-open', isMobileMenuOpen)
+    return () => document.body.classList.remove('menu-open')
+  }, [isMobileMenuOpen])
+
   const navLinks = [
-    { name: 'Home', href: '#' },
+    { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
@@ -23,47 +31,41 @@ const Navbar = () => {
   ]
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'py-4 glass-panel rounded-none border-t-0 border-x-0' : 'py-6'}`}>
-      <div className="container flex justify-between items-center">
-        <a href="#" className="text-2xl font-bold tracking-tighter">
-          PORT<span className="text-[var(--primary)]">FOLIO.</span>
+    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+      <div className="container navbar-inner">
+        <a href="#home" className="brand">
+          PORT<span className="title-accent">FOLIO.</span>
         </a>
 
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-8 font-medium">
+        <ul className="nav-links">
           {navLinks.map((link) => (
             <li key={link.name}>
-              <a href={link.href} className="hover:text-[var(--primary)] transition-colors">
-                {link.name}
-              </a>
+              <a href={link.href}>{link.name}</a>
             </li>
           ))}
         </ul>
 
-        {/* Mobile Menu Toggle */}
-        <button 
-          className="md:hidden p-2"
+        <button
+          className="menu-toggle"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isMobileMenuOpen}
         >
-          {isMobileMenuOpen ? <X /> : <Menu />}
+          {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
+        <motion.div
+          initial={{ opacity: 0, y: -18 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden absolute top-full left-0 w-full glass-panel rounded-none border-x-0 py-6 px-4"
+          className="mobile-nav glass-panel"
         >
-          <ul className="flex flex-col gap-6 items-center">
+          <ul>
             {navLinks.map((link) => (
               <li key={link.name}>
-                <a 
-                  href={link.href} 
-                  className="text-xl font-medium"
+                <a
+                  href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   aria-label={`Navigate to ${link.name}`}
                 >

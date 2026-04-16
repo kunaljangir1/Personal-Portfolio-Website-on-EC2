@@ -1,8 +1,4 @@
 import React from 'react'
-import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, Twitter, ExternalLink, ChevronDown, Rocket, Code, Layout, Smartphone } from 'lucide-react'
-
-// Sub-components will be imported here or defined below for brevity in this initial setup
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
