@@ -12,14 +12,14 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-sm font-medium mb-6 text-[var(--primary)] border-[var(--primary)] border-opacity-20">
-            <Rocket size={16} /> Welcome to my digital space
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-[var(--bg-card)] text-xs font-semibold mb-6 text-[var(--primary)] border border-[var(--border-color)]">
+            <Rocket size={14} /> My Personal Portfolio Project
           </div>
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-white to-slate-500 bg-clip-text text-transparent">
-            I Build <span className="text-[var(--primary)]">Scalable</span> Cloud Solutions.
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight">
+            Aspiring <span className="text-[var(--primary)]">Cloud Engineer</span> & Web Developer
           </h1>
-          <p className="text-xl text-[var(--text-secondary)] mb-10 max-w-lg">
-            A passionate Cloud Architect & Web Enthusiast specialized in AWS, React, and building modern web experiences that scale effortlessly.
+          <p className="text-lg text-[var(--text-secondary)] mb-8 max-w-lg">
+            Hi, I'm a Computer Science student passionate about AWS, full-stack development, and building scalable cloud solutions.
           </p>
           <div className="flex flex-wrap gap-4">
             <a href="#projects" className="btn btn-primary">

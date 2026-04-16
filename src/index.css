@@ -1,16 +1,15 @@
 :root {
-  --primary: #6366f1;
-  --primary-hover: #4f46e5;
-  --bg-dark: #0f172a;
-  --bg-darker: #020617;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --glass: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-blur: blur(12px);
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --bg-dark: #111827;
+  --bg-darker: #000000;
+  --bg-card: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --border-color: #374151;
   --font-main: 'Inter', sans-serif;
   --font-heading: 'Outfit', sans-serif;
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: all 0.2s ease-in-out;
 }
 
 * {
@@ -28,18 +27,16 @@ body {
   background-color: var(--bg-darker);
   color: var(--text-primary);
   line-height: 1.6;
-  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 a {
   text-decoration: none;
   color: inherit;
-  transition: var(--transition);
 }
 
 ul {
@@ -48,48 +45,42 @@ ul {
 
 img {
   max-width: 100%;
-  display: block;
+  border-radius: 0.75rem;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-darker);
+  width: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--glass-border);
+  background: var(--border-color);
   border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
-}
-
-/* Glassmorphism Generic Class */
+/* Card Style (Beginner Friendly) */
 .glass-panel {
-  background: var(--glass);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
-  border-radius: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: var(--transition);
 }
 
-/* Section Container */
+.glass-panel:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+/* Section Layout */
 section {
-  padding: 5rem 1.5rem;
-  max-width: 1200px;
+  padding: 4rem 1.5rem;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
 .container {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
 }
 
 /* Buttons */
@@ -97,13 +88,13 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.8rem 2rem;
-  border-radius: 9999px;
-  font-weight: 600;
+  padding: 0.6rem 1.75rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
   cursor: pointer;
   transition: var(--transition);
   border: none;
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .btn-primary {
@@ -113,22 +104,20 @@ section {
 
 .btn-primary:hover {
   background: var(--primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px -10px var(--primary);
 }
 
 .btn-outline {
   background: transparent;
-  border: 1px solid var(--glass-border);
+  border: 1px solid var(--border-color);
   color: var(--text-primary);
 }
 
 .btn-outline:hover {
-  background: var(--glass);
-  transform: translateY(-2px);
+  background: var(--bg-card);
+  border-color: var(--text-secondary);
 }
 
-/* Background Gradients */
+/* Simplified Gradient */
 .bg-gradient {
   position: fixed;
   top: 0;
@@ -136,7 +125,6 @@ section {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-              radial-gradient(circle at 100% 100%, rgba(79, 70, 229, 0.1) 0%, transparent 50%);
+  background: linear-gradient(180deg, #0b0f19 0%, #000000 100%);
   pointer-events: none;
 }

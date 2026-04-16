@@ -52,20 +52,20 @@ const About = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold mb-6">Mastering the <span className="text-[var(--primary)]">Digital Frontier</span></h2>
+            <h2 className="text-3xl font-bold mb-6">About This <span className="text-[var(--primary)]">Project</span></h2>
             <p className="text-[var(--text-secondary)] mb-8 text-lg">
-              With over 3 years of experience in cloud computing and full-stack development, I help businesses transition to the cloud seamlessly. My approach combines technical excellence with a deep understanding of infrastructure as code (IaC).
+              This portfolio was developed as a cloud computing mini-project. The goal was to build a full-stack application and deploy it on a secure, scalable AWS infrastructure using EC2 and Nginx.
             </p>
             
-            <div className="space-y-6">
+            <div className="space-y-4">
               {highlights.map((item, index) => (
-                <div key={index} className="flex gap-4 p-4 rounded-2x border border-transparent hover:border-[var(--glass-border)] transition-all">
-                  <div className="p-3 bg-[var(--glass)] rounded-xl h-fit">
+                <div key={index} className="flex gap-4 p-4 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)]">
+                  <div className="p-2 bg-[var(--bg-darker)] rounded-lg h-fit text-[var(--primary)]">
                     {item.icon}
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold mb-1">{item.title}</h4>
-                    <p className="text-[var(--text-secondary)]">{item.desc}</p>
+                    <h4 className="text-lg font-bold mb-1">{item.title}</h4>
+                    <p className="text-sm text-[var(--text-secondary)]">{item.desc}</p>
                   </div>
                 </div>
               ))}
